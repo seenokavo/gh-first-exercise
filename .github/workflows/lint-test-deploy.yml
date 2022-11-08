@@ -7,8 +7,17 @@ jobs:
       - name: Get code
         uses: actions/checkout@v3
 
-  dependencies:
+  node:
     needs: get-code
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+  dependencies:
+    needs: node
     runs-on: ubuntu-latest
     steps:
       - name: Install dependencies

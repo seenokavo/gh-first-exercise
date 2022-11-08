@@ -8,12 +8,14 @@ jobs:
         uses: actions/checkout@v3
 
   dependencies:
+    needs: get-code
     runs-on: ubuntu-latest
     steps:
       - name: Install dependencies
-        run: npm i --omit=dev
+        run: npm ci
 
   lint:
+    needs: dependencies
     runs-on: ubuntu-latest
     steps:
       - name: Lint
